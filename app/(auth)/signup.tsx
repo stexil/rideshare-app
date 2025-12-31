@@ -82,12 +82,14 @@ export default function Signup() {
         school: finalSchool,
         hasCar: false,
         photoURL: "",            // ✅ blank profile image
-        favoriteEvents: [],      // ✅ empty rollup for now
+        upcomingEvents: [],      // ✅ empty rollup for now
         stats: {
         attendedEventsCount: 0,
         completedRidesCount: 0,
         reliabilityScore: 0,
         noShowCount: 0,
+        followers: 0,
+        following: 0 
         },
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),

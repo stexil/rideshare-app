@@ -8,9 +8,19 @@
     "scheme": "rideshareapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sexil3.rideshareapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+
+        "NSLocationWhenInUseUsageDescription": "We use your location to show nearby events and pickup points.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "We use your location to show nearby events and pickup points.",
+        "NSLocationAlwaysUsageDescription": "We use your location to show nearby events and pickup points."
+      }
     },
+
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -19,12 +29,15 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.sexil3.rideshareapp"
     },
+
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+
     "plugins": [
       "expo-router",
       [
@@ -38,11 +51,27 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      "expo-font",
+
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsVersion": "11.16.0"
+        }
       ]
     ],
+
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "9d65c775-5ef4-4748-a52f-b3e51a293548"
+      }
     }
   }
 }

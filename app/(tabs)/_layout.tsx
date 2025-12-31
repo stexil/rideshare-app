@@ -1,14 +1,11 @@
 import { Tabs } from "expo-router";
 import React from "react";
+import { View } from "react-native";
 
 import { HapticTab } from "@/components/haptic-tab";
 import { IconSymbol } from "@/components/ui/icon-symbol";
-import { Colors } from "@/constants/theme";
-import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   const bg = "#050507";
   const border = "rgba(255,255,255,0.10)";
 
@@ -17,36 +14,83 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarStyle: {
-          backgroundColor: bg,
-          borderTopColor: border,
-        },
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+
+        // Active/inactive like your web sample
+        tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "rgba(255,255,255,0.55)",
-        tabBarBackground: () => <React.Fragment />,
+
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: "600",
+          marginTop: -2,
+        },
+
+        tabBarStyle: {
+          backgroundColor: "rgba(5,5,7,0.9)",
+          borderTopColor: border,
+          height: 84,
+        },
       }}
     >
+      {/* EVENTS / HOME */}
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Events",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={26} name="house.fill" color={color} />
+          ),
         }}
       />
+
+      {/* MAP */}
       <Tabs.Screen
-        name="explore"
+        name="explore_map"
         options={{
-          title: "Explore",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Map",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={26} name="map.fill" color={color} />
+          ),
         }}
       />
+
+      {/* HOST (normal tab, slightly smaller icon like your web sample) */}
+      <Tabs.Screen
+        name="host"
+        options={{
+          title: "Host",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={22} name="plus" color={color} />
+          ),
+        }}
+      />
+
+      {/* TICKETS */}
+      <Tabs.Screen
+        name="tickets"
+        options={{
+          title: "Tickets",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={26} name="ticket.fill" color={color} />
+          ),
+        }}
+      />
+
+      {/* PROFILE */}
       <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={26} name="person.fill" color={color} />
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+/**
+ * Avoid importing StyleSheet just for absoluteFillObject
+ * (keeps this file copy/paste simple).
+ */
